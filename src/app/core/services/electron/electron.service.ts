@@ -27,12 +27,23 @@ export class ElectronService {
       this.ipcRenderer = window.require('electron').ipcRenderer;
       this.webFrame = window.require('electron').webFrame;
 
-      // If you want to use remote object in renderer process, please set enableRemoteModule to true in main.ts
-      // this.remote = window.require('@electron/remote');
-      // console.log('remote - globalShortcut', this.remote.globalShortcut);
+       //If you want to use remote object in renderer process, please set enableRemoteModule to true in main.ts
+       this.remote = window.require('@electron/remote');
 
       this.childProcess = window.require('child_process');
       this.fs = window.require('fs');
     }
   }
+  getCurrentWindow() {
+    return this.remote.getCurrentWindow();
+  }
+  send(data,evet){
+
+    this.ipcRenderer.send(data,evet)
+    }
+     closeWindow() {
+      this.ipcRenderer.send('min')
+
+    }
+
 }

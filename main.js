@@ -1,4 +1,4 @@
-const { app, BrowserWindow ,screen} = require('electron')
+const { app, BrowserWindow ,screen ,ipcMain,remote } = require('electron')
 var path = require('path');
 var url = require('url');
 
@@ -32,6 +32,12 @@ function createWindow() {
 
     },
   });
+
+
+  ipcMain.on('min', (event,arg) => {
+    win.minimize()
+  });
+
 
   if (serve) {
 
