@@ -1,37 +1,20 @@
 {
-  "productName": "angular-electron",
-  "directories": {
-    "output": "release/"
-  },
-  "files": [
-    "**/*",
-    "!**/*.ts",
-    "!.github",
-    "!.vscode",
-    "!.code-workspace",
-    "!.npmrc",
-    "!*.md",
-    "!package.json",
-    "!package-lock.json",
-    "!src/",
-    "!e2e/",
-    "!hooks/",
-    "!_config.yml",
-    "!angular.json",
-    "!tsconfig*.json",
-    "!tslint.json",
-    "!.eslintrc.json",
-    "!karma.conf.js",
-    "!angular.webpack.js",
-    "!*.map"
-  ],
-  "win": {
-    "icon": "dist/assets/icons",
-    "target": ["portable"]
-  },
-  "portable": {
-    "splashImage": "dist/assets/icons/electron.bmp"
-  },
+   "appId": "com.sekadev.copyvault",
+    "productName": "copyvault",
+    "files": [
+      "main.js",
+      "dist"
+    ],
+    "win": {
+      "icon": "dist/assets/icons",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
+    },
   "mac": {
     "icon": "dist/assets/icons",
     "target": ["dmg"]

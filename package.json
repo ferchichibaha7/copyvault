@@ -1,5 +1,5 @@
 {
-  "name": "angular-electron",
+  "name": "copyvault",
   "version": "9.0.7",
   "description": "Angular 11 with Electron (Typescript + SASS + Hot Reload)",
   "homepage": "https://github.com/maximegris/angular-electron",
@@ -23,22 +23,20 @@
   "main": "main.js",
   "private": true,
   "scripts": {
-    "postinstall": "electron-builder install-app-deps",
-    "ng": "ng",
-    "start": "npm-run-all -p electron:serve ng:serve",
-    "build": "npm run electron:serve-tsc && ng build --base-href ./",
-    "build:dev": "npm run build -- -c dev",
-    "build:prod": "npm run build -- -c production",
-    "ng:serve": "ng serve -c web -o",
-    "electron:serve-tsc": "tsc -p tsconfig.serve.json",
-    "electron:serve": "wait-on tcp:4200 && npm run electron:serve-tsc && npx electron . --serve",
-    "electron:local": "npm run build:prod && npx electron .",
-    "electron:build": "npm run build:prod && electron-builder build --publish=never",
-    "test": "ng test --watch=false",
-    "test:watch": "ng test",
-    "e2e": "npm run build:prod && cross-env TS_NODE_PROJECT='e2e/tsconfig.e2e.json' mocha --timeout 300000 --require ts-node/register e2e/**/*.e2e.ts",
-    "version": "conventional-changelog -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
-    "lint": "ng lint"
+    "ng": "ng serve",
+    "clean": "rimraf dist",
+    "prestart": "npm run build",
+    "watch": "npm-run-all -p electron:serve ng:serve",
+    "electron:serve": "wait-on tcp:4200  && npx electron . --serve",
+    "start": "electron .",
+    "ng:serve": "ng serve -c web ",
+    "prebuild": "npm run clean",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "prerelease": "npm run build -- --prod",
+    "release": "electron-builder --publish never"
   },
   "dependencies": {
     "@electron/remote": "1.0.4"
@@ -105,5 +103,22 @@
   },
   "browserslist": [
     "chrome 83"
-  ]
+  ],
+  "build": {
+    "appId": "com.sekadev.copyvault",
+    "productName": "copyvault",
+    "files": [
+      "main.js",
+      "dist"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
 }
