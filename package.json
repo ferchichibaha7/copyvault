@@ -24,7 +24,7 @@
   "private": true,
   "scripts": {
     "ng": "ng serve",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist && rimraf release ",
     "prestart": "npm run build",
     "watch": "npm-run-all -p electron:serve ng:serve",
     "electron:serve": "wait-on tcp:4200  && npx electron . --serve",
@@ -103,22 +103,6 @@
   },
   "browserslist": [
     "chrome 83"
-  ],
-  "build": {
-    "appId": "com.sekadev.copyvault",
-    "productName": "copyvault",
-    "files": [
-      "main.js",
-      "dist"
-    ],
-    "win": {
-      "target": "nsis"
-    },
-    "nsis": {
-      "oneClick": false,
-      "perMachine": false,
-      "allowElevation": true,
-      "allowToChangeInstallationDirectory": true
-    }
-  }
+  ]
+
 }
