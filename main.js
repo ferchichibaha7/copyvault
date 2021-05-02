@@ -34,15 +34,31 @@ function createWindow() {
   });
 
 
-  ipcMain.on('min', (event,arg) => {
-    win.minimize()
+  ipcMain.on('tbar', (event,data) => {
+    switch (data.event) {
+      case 'minimize':
+        win.minimize()
+        break;
+        case 'close':
+          win.close()
+          break;
+          case 'restore':
+            if (win.isMaximized()) {
+              win.restore();
+            } else {
+              win.maximize();
+            }
+            break;
+      default:
+        break;
+    }
   });
 
 
   if (serve) {
 
     win.webContents.openDevTools();
-
+    win.maximize();
     require('electron-reload')(__dirname, {
       electron: require(`${__dirname}/node_modules/electron`)
     });
@@ -72,7 +88,9 @@ try {
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
   // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
-  app.on('ready', () => setTimeout(createWindow, 400));
+  app.on('ready', () => {setTimeout(createWindow, 400)
+
+  });
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
