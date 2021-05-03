@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { TbarService } from './core/services/tbar.service';
+import { Component, OnInit } from '@angular/core';
 import { ElectronService } from './core/services';
 import { TranslateService } from '@ngx-translate/core';
 import { AppConfig } from '../environments/environment';
@@ -9,8 +10,10 @@ import { AppConfig } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   constructor(
     private electronService: ElectronService,
+    private TbarService: TbarService,
     private translate: TranslateService
   ) {
     this.translate.setDefaultLang('en');
@@ -21,8 +24,22 @@ export class AppComponent {
       console.log('Run in electron');
       console.log('Electron ipcRenderer', this.electronService.ipcRenderer);
       console.log('NodeJS childProcess', this.electronService.childProcess);
+
     } else {
       console.log('Run in browser');
     }
   }
+
+
+
+
+minimize(){
+  this.TbarService.minimizeWindow()
+}
+restore(){
+  this.TbarService.restore();
+}
+close(){
+  this.TbarService.closeWindow()
+}
 }

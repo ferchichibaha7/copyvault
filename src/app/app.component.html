@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+<div id="menu-bar">
+  <div class="left" role="menu">
+    <button class="menubar-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+    <h5>Copyvault</h5>
+  </div>
+  <div class="right">
+    <button class="menubar-btn" id="minimize-btn" (click)="minimize()"><i class="fas fa-window-minimize"></i></button>
+    <button class="menubar-btn" id="max-unmax-btn" (click)="restore()"><i class="far fa-square"></i></button>
+    <!-- todo change square icon on restore / maximize-->
+    <button class="menubar-btn" id="close-btn" (click)="close()"><i class="fas fa-times"></i></button>
+  </div>
+</div>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

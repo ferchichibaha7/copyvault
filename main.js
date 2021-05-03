@@ -1,4 +1,4 @@
-const { app, BrowserWindow ,screen} = require('electron')
+const { app, BrowserWindow ,screen ,ipcMain,remote } = require('electron')
 var path = require('path');
 var url = require('url');
 
@@ -17,11 +17,13 @@ function createWindow() {
 
   // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height,
-    //frame: isWindows ? false : true , //Remove frame to hide default menu
+    x:(size.width/2) - (930/2),
+    y: (size.height/2) - (605/2),
+    width: 930,
+    minWidth:600,
+    minHeight:400,
+    height: 605,
+    frame: isWindows ? false : true , //Remove frame to hide default menu
 
     webPreferences: {
       nodeIntegration: true,
@@ -33,10 +35,31 @@ function createWindow() {
     },
   });
 
+
+  ipcMain.on('tbar', (event,data) => {
+    switch (data.event) {
+      case 'minimize':
+        win.minimize()
+        break;
+        case 'close':
+          win.close()
+          break;
+          case 'restore':
+            if (win.isMaximized()) {
+              win.restore();
+            } else {
+              win.maximize();
+            }
+            break;
+      default:
+        break;
+    }
+  });
+
+
   if (serve) {
 
     win.webContents.openDevTools();
-
     require('electron-reload')(__dirname, {
       electron: require(`${__dirname}/node_modules/electron`)
     });
@@ -66,7 +89,9 @@ try {
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
   // Added 400 ms to fix the black background issue while using transparent window. More detais at https://github.com/electron/electron/issues/15947
-  app.on('ready', () => setTimeout(createWindow, 400));
+  app.on('ready', () => {setTimeout(createWindow, 400)
+
+  });
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
