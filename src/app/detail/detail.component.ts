@@ -11,10 +11,4 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void { }
 
-
-
-  onclick(){
-console.log("hola");
-
-  }
 }

@@ -17,11 +17,13 @@ function createWindow() {
 
   // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height,
-    //frame: isWindows ? false : true , //Remove frame to hide default menu
+    x:(size.width/2) - (930/2),
+    y: (size.height/2) - (605/2),
+    width: 930,
+    minWidth:600,
+    minHeight:400,
+    height: 605,
+    frame: isWindows ? false : true , //Remove frame to hide default menu
 
     webPreferences: {
       nodeIntegration: true,
@@ -58,7 +60,6 @@ function createWindow() {
   if (serve) {
 
     win.webContents.openDevTools();
-    win.maximize();
     require('electron-reload')(__dirname, {
       electron: require(`${__dirname}/node_modules/electron`)
     });
