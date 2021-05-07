@@ -1,8 +1,11 @@
+<div class="container">
+
 <div id="menu-bar">
   <div class="left" role="menu">
-    <button class="menubar-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
+    <button (click)="clickEvent($event)" class="menubar-btn" id="menu-btn"><i class="fas fa-bars"></i></button>
   </div>
   <div class="menubar-title">
+    <img src="../assets/icons/copyvault_icon.png" class="float-left" >
     <h5 >Copyvault</h5>
   </div>
   <div class="right">
@@ -12,11 +15,12 @@
     <button class="menubar-btn" id="close-btn" (click)="close()"><i class="fas fa-times"></i></button>
   </div>
 </div>
-<div class=" sidemain ">
-  <div class="sidebar">
+<div class=" sidemain  ">
+  <div   [ngClass]="status ? 'sidebar' : 'sidebarmini'">
 
   </div>
   <div class="main">
   <router-outlet></router-outlet>
+</div>
 </div>
 </div>

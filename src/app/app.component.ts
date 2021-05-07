@@ -10,7 +10,7 @@ import { AppConfig } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  status: boolean = true;
   constructor(
     private electronService: ElectronService,
     private TbarService: TbarService,
@@ -31,7 +31,11 @@ export class AppComponent {
   }
 
 
+  clickEvent(evt){
+    this.status = !this.status;
+    console.log(this.status);
 
+  }
 
 minimize(){
   this.TbarService.minimizeWindow()
