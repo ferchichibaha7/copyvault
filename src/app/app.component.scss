@@ -71,33 +71,22 @@ i{
 
 
 .sidemain{
-  display: flex;
-  padding-top: 30px;
   overflow-x: auto;
-
+display: flex;
 
 }
 
 .sidebar{
-  height: 100vh;
+  padding-top: 35px !important;
 
+  height: 100vh;
   background-color: rgb(255, 255, 255);
   -webkit-box-shadow: 0 0 2px 1px #d6d6d6af;
   box-shadow: 0 0 2px 1px #d6d6d6af;
   z-index: 10;
-  width: 20%; /* Use the percentage that fits to your needs */
+  width: 40% !important; /* Use the percentage that fits to your needs */
     min-width: 200px;
-    -webkit-transition: width 0.2s ease-in-out;
-    -moz-transition: width 0.2s ease-in-out;
-    -ms-transition: width 0.2s ease-in-out;
-    -o-transition: width 0.2s ease-in-out;
-    transition: width 0.2s ease-in-out;
 
-    -webkit-transition: min-width 0.2s ease-in-out;
-    -moz-transition: min-width 0.2s ease-in-out;
-    -ms-transition: min-width 0.2s ease-in-out;
-    -o-transition: min-width 0.2s ease-in-out;
-    transition: min-width 0.3s ease-in-out;
 
 }
 
@@ -105,16 +94,38 @@ i{
 cursor: pointer !important;}
 
 .main{
+  padding-top: 35px !important;
+
   width: 100%;
 height: 100vh;
-padding-left: 30px;
+padding-left: 30px !important;
   background-color: rgb(255, 255, 255);
 
 }
+
+.navitem{
+  cursor: pointer;
+
+  background-color: rgba(192, 202, 238, 0.315);
+  padding: 10px;
+  margin: 15px;
+  border-radius: 5px;
+
+  i{
+    margin-right: 5px;
+    font-size: 20px;
+    color: rgb(43, 79, 177);
+  }
+}
+
 @media only screen and (max-width: 800px) {
   .sidebar {
-    width: 50px; /* Use the percentage that fits to your needs */
-    min-width: 50px;
+    width: 80px; /* Use the percentage that fits to your needs */
+    min-width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
   }
 
   .left{
@@ -123,27 +134,63 @@ padding-left: 30px;
   .menubar-title{
     padding-left: 20px !important;
   }
+  .navitem{
+    cursor: pointer;
+
+    border-radius: 50%;
+    padding: 0px;
+    display: flex;
+
+    i{
+      margin:0px;
+      padding: 10px;
+      font-size: 20px;
+      margin-top: 0px;
+    }
+    a{
+      display: none !important;
+    }
+  }
+
+
 }
 
 
 .sidebarmini {
-  width: 50px; /* Use the percentage that fits to your needs */
-  min-width: 50px;
+  padding-top: 35px !important;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+  width: 80px; /* Use the percentage that fits to your needs */
+  min-width: 80px;
   height: 100vh;
 
   background-color: rgb(255, 255, 255);
   -webkit-box-shadow: 0 0 2px 1px #d6d6d6af;
   box-shadow: 0 0 2px 1px #d6d6d6af;
   z-index: 10;
-  -webkit-transition: width 0.2s ease-in-out;
-  -moz-transition: width 0.2s ease-in-out;
-  -ms-transition: width 0.2s ease-in-out;
-  -o-transition: width 0.2s ease-in-out;
-  transition: width 0.2s ease-in-out;
 
-  -webkit-transition: min-width 0.2s ease-in-out;
-  -moz-transition: min-width 0.2s ease-in-out;
-  -ms-transition: min-width 0.2s ease-in-out;
-  -o-transition: min-width 0.2s ease-in-out;
-  transition: min-width 0.3s ease-in-out;
+}
+
+.navitem2{
+  cursor: pointer;
+  background-color: rgba(192, 202, 238, 0.315);
+  margin: 15px;
+
+  border-radius: 50%;
+    padding: 0px;
+    display: flex;
+
+    i{
+      margin:0px;
+      padding: 10px;
+      font-size: 20px;
+      margin-top: 0px;
+      margin-right: 0px;
+      color: rgb(43, 79, 177);
+    }
+    a{
+      display: none !important;
+    }
 }

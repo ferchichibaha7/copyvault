@@ -11,6 +11,7 @@ import { AppConfig } from '../environments/environment';
 })
 export class AppComponent {
   status: boolean = true;
+
   constructor(
     private electronService: ElectronService,
     private TbarService: TbarService,

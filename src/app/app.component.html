@@ -17,10 +17,13 @@
 </div>
 <div class=" sidemain  ">
   <div   [ngClass]="status ? 'sidebar' : 'sidebarmini'">
-
+    <div [ngClass]="status ? 'navitem' : 'navitem2'"  role="menu">
+    <i class="fa fa-fw fa-home"></i>
+    <a>Vault</a>
+</div>
   </div>
   <div class="main">
-  <router-outlet></router-outlet>
+  <router-outlet ></router-outlet>
 </div>
 </div>
 </div>
